@@ -1,0 +1,3 @@
+rootProject.name = 'litecoin_balance'
+
+include ':app'
