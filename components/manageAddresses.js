@@ -5,6 +5,7 @@ import GlobalConstants from '../globals';
 import renderIf from '../utils/renderIf.js';
 import Swipeout from 'react-native-swipeout';
 import Numbers from '../utils/numbers';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class ManageAddress extends Component {
     constructor(props) {
@@ -40,9 +41,9 @@ export default class ManageAddress extends Component {
 
     static navigationOptions = ({ navigate, navigation }) => ({
         title: GlobalConstants.getAppName() + " Balance",
-        //gesturesEnabled: false,
-        //headerLeft: <MaterialIcons name="home" style={styles.leftButton} onPress={() =>{ navigation.navigate('Home'); }} />,
-        //headerRight: <MaterialIcons name="add" style={styles.rightButton} onPress={() =>{ navigation.navigate('AddAddress')}}/>
+        gesturesEnabled: false,
+        headerLeft: <Icon name="home" style={styles.leftButton} onPress={() =>{ navigation.navigate('Home'); }} />,
+        headerRight: <Icon name="add" style={styles.rightButton} onPress={() =>{ navigation.navigate('AddAddress')}}/>
     })
 
     initView = () => {
@@ -123,6 +124,7 @@ export default class ManageAddress extends Component {
                     <View style={{ flex: 0.25, borderBottomColor: "#e1e8ee", borderBottomWidth: 1, marginRight: 2 }} />
                     </View>
                     {renderIf(this.state.db.balanceInfo.addresses.length == 0, <View>
+                        <Icon name="add-alert" style={styles.addressIcon} fadeDuration={100} />
                         <Text style={styles.noAddress}>It looks like you don't have any addresses yet.</Text>
                         <Text style={styles.noAddress}>You can add one below.</Text>
                     </View>)}

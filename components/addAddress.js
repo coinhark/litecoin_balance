@@ -4,6 +4,7 @@ import { FormLabel, FormInput, FormValidationMessage, Button, Card } from 'react
 import GlobalConstants from '../globals';
 import renderIf from '../utils/renderIf.js';
 import WAValidator from 'wallet-address-validator';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 require('../shim');
 let bitcoin = require('bitcoinjs-lib');
@@ -51,15 +52,13 @@ export default class AddAddress extends Component {
 
     static navigationOptions = ({navigate, navigation}) => ({
         title: GlobalConstants.getAppName() + " Balance",
-        //gesturesEnabled: false,
-        /*
-        headerLeft: <MaterialIcons name="arrow-back" style={styles.leftButton} onPress={() => {
+        gesturesEnabled: false,
+        headerLeft: <Icon name="keyboard-backspace" style={styles.leftButton} onPress={() => {
             navigation.navigate('ManageAddresses');
         }}/>,
-        headerRight: <MaterialCommunityIcons name="qrcode" style={styles.rightButton} onPress={() => {
+        headerRight: <Icon name="qrcode" style={styles.rightButton} onPress={() => {
             navigation.navigate('Scanner');
         }}/>,
-        */
     })
 
     _checkDisabled = () => {
