@@ -1,16 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React from 'react';
+import { StyleSheet, Text, View, Image, Clipboard, Platform, StatusBar } from 'react-native';
+import BarcodeScanner from './components/barcodeScanner.js';
+import AddAddress from './components/addAddress.js';
+import ManageAddresses from './components/manageAddresses.js';
+import WelcomeScreen from './components/welcomeScreen.js';
+import { StackNavigator } from 'react-navigation';
+import { FormLabel, FormInput, Button, Card } from 'react-native-elements'
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+export const Coinhark = StackNavigator({
+    Home: { screen: WelcomeScreen },
+    AddAddress: { screen: AddAddress },
+    Scanner: { screen: BarcodeScanner },
+    ManageAddresses: { screen: ManageAddresses }
+});
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -19,39 +21,13 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
-  }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return <Coinhark />;
+    }
+}
