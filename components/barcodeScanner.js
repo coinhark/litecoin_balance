@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Alert, Keyboard } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import StatelessNavigation from '../utils/navigation';
-import Scanner from '../components/scanner.js';
 import Camera from 'react-native-camera';
 import GlobalConstants from '../globals';
 
