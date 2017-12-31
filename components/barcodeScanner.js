@@ -20,8 +20,6 @@ export default class BarcodeScanner extends Component {
 
     async componentWillMount() {
         Keyboard.dismiss();
-        //const { status } = await Permissions.askAsync(Permissions.CAMERA);
-        //this.setState({hasCameraPermission: status === 'granted'});
     }
 
     render() {
