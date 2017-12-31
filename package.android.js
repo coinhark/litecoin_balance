@@ -16,7 +16,6 @@
     "bs58check": "^2.1.1",
     "buffer": "5.0.8",
     "events": "^1.1.1",
-    "ios-deploy": "^1.9.2",
     "path-browserify": "0.0.0",
     "process": "^0.11.10",
     "prop-types": "^15.6.0",
