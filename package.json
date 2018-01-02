@@ -66,5 +66,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "config": {
+    "unsafe-perm": true
   }
 }
