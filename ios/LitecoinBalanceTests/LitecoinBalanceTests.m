@@ -16,11 +16,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface litecoin_balanceTests : XCTestCase
+@interface LitecoinBalanceTests : XCTestCase
 
 @end
 
-@implementation litecoin_balanceTests
+@implementation LitecoinBalanceTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

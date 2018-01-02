@@ -1,4 +1,4 @@
-package com.litecoin_balance;
+package com.coinhark.litecoinbalance;
 
 import android.app.Application;
 

@@ -1,4 +1,4 @@
-package com.litecoin_balance;
+package com.coinhark.litecoinbalance;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "litecoin_balance";
+        return "LitecoinBalance";
     }
 }
