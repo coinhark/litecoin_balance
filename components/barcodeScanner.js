@@ -13,7 +13,7 @@ export default class BarcodeScanner extends Component {
     }
 
     static navigationOptions = {
-        title: GlobalConstants.getAppName() + " Balance",
+        title: GlobalConstants.AppName + "Balance",
         gesturesEnabled: false
     };
 
