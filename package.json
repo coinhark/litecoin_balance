@@ -22,7 +22,7 @@
     "process": "^0.11.10",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
-    "react-native": "0.51.0",
+    "react-native": "^0.51.0",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git#b263bef2892c8c98ec81820dc87dc7ecd61ea5a4",
     "react-native-elements": "^0.18.5",
     "react-native-level-fs": "^3.0.0",
