@@ -1,5 +1,5 @@
 {
-  "name": "litecoin_balance",
+  "name": "LitecoinBalance",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -66,5 +66,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "config": {
+    "unsafe-perm": true
   }
 }
