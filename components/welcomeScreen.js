@@ -114,7 +114,7 @@ export default class WelcomeScreen extends Component {
     }
 
     static navigationOptions = ({navigate, navigation}) => ({
-        title: GlobalConstants.getAppName() + " Balance",
+        title: GlobalConstants.getAppName(),
         headerLeft: null,
         gesturesEnabled: false
     })
@@ -126,7 +126,7 @@ export default class WelcomeScreen extends Component {
         if(this.state.loaded) {
             visibletext = (
                 <Card wrapperStyle={styles.card} title="Welcome">
-                    <Image style={styles.symbol} source={require('../assets/images/litecoin_symbol.png')}/>
+                    <Image style={styles.symbol} source={this.globals.getAssets().symbol}/>
                     <Text style={styles.viewTitleL}>Total Balance:</Text>
                     <Text style={styles.viewTitle}>{Numbers.formatBalance(this.state.totalBalance, 'US')} {this.globals.getCoinTicker()}</Text>
                     <Text wrapperStyle={styles.card} style={styles.viewTitleSM}>${this.state.valueInDollars} USD</Text>
@@ -141,7 +141,7 @@ export default class WelcomeScreen extends Component {
         } else {
             visibletext = (
                 <Card wrapperStyle={styles.card} title="Welcome">
-                    <Image style={styles.symbol} source={require('../assets/images/litecoin_symbol.png')}/>
+                    <Image style={styles.symbol} source={this.globals.getAssets().symbol}/>
                     <Text style={styles.viewTitleL}>Total Balance</Text>
                     <ActivityIndicator style={styles.viewTitleSpinner} size="small" color="#2196f3" />
                     <Button
@@ -157,7 +157,7 @@ export default class WelcomeScreen extends Component {
         if(this.state.apiError != null) {
             visibletext = (
                 <Card wrapperStyle={styles.card} title="Welcome">
-                    <Image style={styles.symbol} source={require('../assets/images/litecoin_symbol.png')}/>
+                    <Image style={styles.symbol} source={this.globals.getAssets().symbol}/>
                     <Text style={styles.viewTitleL}>Total Balance</Text>
                     <Text style={styles.error} size="small">{this.state.apiError}</Text>
                     <Text style={styles.refresh} size="small" onPress={() => this.initView()}>Refresh Now</Text>

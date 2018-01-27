@@ -40,7 +40,7 @@ export default class ManageAddress extends Component {
     }
 
     static navigationOptions = ({ navigate, navigation }) => ({
-        title: GlobalConstants.getAppName() + " Balance",
+        title: GlobalConstants.getAppName(),
         gesturesEnabled: false,
         headerLeft: <Icon name="home" style={styles.leftButton} onPress={() =>{ navigation.navigate('Home'); }} />,
         headerRight: <Icon name="add" style={styles.rightButton} onPress={() =>{ navigation.navigate('AddAddress')}}/>

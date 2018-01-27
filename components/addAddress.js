@@ -3,11 +3,9 @@ import { Text, TextInput, View, StyleSheet, Alert, AsyncStorage } from 'react-na
 import { FormLabel, FormInput, FormValidationMessage, Button, Card } from 'react-native-elements'
 import GlobalConstants from '../globals';
 import renderIf from '../utils/renderIf.js';
-import WAValidator from 'wallet-address-validator';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 require('../shim');
-let bitcoin = require('bitcoinjs-lib');
 
 export default class AddAddress extends Component {
     constructor(props) {
@@ -35,7 +33,6 @@ export default class AddAddress extends Component {
             invalidAddress: false,
             addressExists: false
         };
-        this.bitcoin = bitcoin;
         this.globals = new GlobalConstants();
     }
 
@@ -51,7 +48,7 @@ export default class AddAddress extends Component {
     }
 
     static navigationOptions = ({navigate, navigation}) => ({
-        title: GlobalConstants.getAppName() + " Balance",
+        title: GlobalConstants.getAppName(),
         gesturesEnabled: false,
         headerLeft: <Icon name="keyboard-backspace" style={styles.leftButton} onPress={() => {
             navigation.navigate('ManageAddresses');
@@ -74,33 +71,7 @@ export default class AddAddress extends Component {
         if (this.state.db.balanceInfo.addresses.find(o => o.address === this.state.address)) {
             this.setState({addressExists: true});
         } else {
-            let validationAddress = this.state.address;
-            if (this.state.address.startsWith('3')) {
-                const decoded = this.bitcoin.address.fromBase58Check(this.state.address);
-                let version = decoded.version;
-                if (version === 5) {
-                    version = 50;
-                }
-                address.inputAddress = bitcoin.address.toBase58Check(decoded['hash'], version);
-            }
-            if (this.state.address.startsWith('M')) {
-                const decoded = this.bitcoin.address.fromBase58Check(this.state.address);
-                let version = decoded.version;
-                if (version === 50) {
-                    version = 5;
-                }
-                validationAddress = bitcoin.address.toBase58Check(decoded['hash'], version);
-            }
-            let valid = WAValidator.validate(validationAddress, this.globals.getCoinName().toLowerCase());
-            if (valid) {
-                let tmpDb = this.state.db;
-                tmpDb.balanceInfo.addresses.push(address);
-                this.setState({db: tmpDb});
-                AsyncStorage.setItem("db", JSON.stringify(this.state.db));
-                this.props.navigation.navigate('ManageAddresses');
-            } else {
-                this.setState({invalidAddress: true});
-            }
+            this.globals.validateAddress(address, this);
         }
     }
 
