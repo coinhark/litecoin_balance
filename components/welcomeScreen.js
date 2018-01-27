@@ -54,6 +54,7 @@ export default class WelcomeScreen extends Component {
                      Promise.all(this.state.db.balanceInfo.addresses.map(o =>
                          fetch(this.globals.getBlockchainApi().url + o.inputAddress).then(resp => resp.json())
                      )).then(json => {
+                         json = this.globals.formatBlockchainApiResponse(json);
                          if (!Array.isArray(json) || json[0].balance == null) {
                              console.log(`Unexpected result from ${this.globals.getBlockchainApi().name} API.`);
                              this.setState({apiError: `Unexpected result from ${this.globals.getBlockchainApi().name} API.`});
@@ -77,6 +78,7 @@ export default class WelcomeScreen extends Component {
                          fetch(this.globals.getMarketApi().url)
                              .then(response => response.json())
                              .then(responseJson => {
+                                 responseJson = this.globals.formatMarketApiResponse(responseJson);
                                  if (!Array.isArray(responseJson) || responseJson[0].price_usd == null) {
                                      console.log(`Unexpected result from ${this.globals.getMarketApi().name} API.`);
                                      this.setState({apiError: `Unexpected result from ${this.globals.getMarketApi().name} API.`});
