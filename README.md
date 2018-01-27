@@ -123,6 +123,24 @@ class GlobalConstants {
         return this.blockchainApi[this.coin];
     }
 
+    formatMarketApiResponse(json) {
+      if(this.coin == 'ltc') {
+        return json;
+      } else {
+        console.log("error: unknown coin: " + this.coin);
+        return {};
+      }
+    }
+
+    formatBlockchainApiResponse(json) {
+      if(this.coin == 'ltc') {
+        return json;
+      } else {
+        console.log("error: unknown coin: " + this.coin);
+        return {};
+      }
+    }
+
     getAssets() {
         return this.assets[this.coin];
     }
